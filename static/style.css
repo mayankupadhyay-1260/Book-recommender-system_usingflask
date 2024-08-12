@@ -1,0 +1,137 @@
+body {
+    font-family: 'Georgia', serif;
+    background: url('https://wallpapercave.com/wp/wp7490243.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.toggle-container button {
+    background-color: #8B4513;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.toggle-container button.active {
+    background-color: #5A2D0C;
+    transform: scale(1.1);
+}
+
+.toggle-container button:hover {
+    background-color: #5A2D0C;
+}
+
+.form-container {
+    position: relative;
+}
+
+form {
+    display: none;
+    transition: opacity 0.3s;
+}
+
+form.active {
+    display: block;
+    opacity: 1;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+    color: #8B4513;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Georgia', serif;
+    color: #5A2D0C;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #8B4513;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #5A2D0C;
+}
+
+.forgot-password {
+    display: block;
+    margin-bottom: 15px;
+    color: #8B4513;
+    text-decoration: none;
+    font-family: 'Georgia', serif;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.notification-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.notification-box {
+animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+from {
+    opacity: 0;
+}
+to {
+    opacity: 1;
+}
+}

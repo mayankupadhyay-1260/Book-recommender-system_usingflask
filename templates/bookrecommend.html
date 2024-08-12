@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bookstyle.css') }}">
+    <link rel="icon" href="https://m.media-amazon.com/images/I/615hAlMjRTL.png">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <script>
+      if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/static/service-worker.js')
+          .then(registration => {
+              console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(error => {
+              console.log('Service Worker registration failed:', error);
+          });
+      }
+  </script>
+</head>
+<body>
+    <header>
+        <h1>Good Old Friend - A Book Recommender for all Book Lovers</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Choose Your Favorite Genre:</h2>
+            <select id="genre-select">
+                <option value="">Select a genre</option>
+                <option value="Fiction">Fiction</option>
+                <option value="Tech">Tech</option>
+                <option value="nonfiction">Non Fiction</option>
+                <option value="Science">Science</option>
+                <option value="Philosophy">Philosophy</option>
+              \
+                <!-- Add more genres as needed -->
+            </select>
+            <button id="get-recommendations">Get Recommendations</button>
+        </section>
+        <section id="recommendations">
+            <h2>Recommended Books:</h2>
+            <ul id="book-list">
+                <!-- Book list will be populated here -->
+            </ul>
+        </section>
+    </main>
+
+  </body>
+
+    <!-- Add JavaScript code to make the AJAX request -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#get-recommendations').click(function() {
+          var genre = $('#genre-select').val();
+          $.ajax({
+            type: 'POST',
+            url: '/recommend',
+            contentType: 'application/json',
+            data: JSON.stringify({ genre: genre }),
+            success: function(data) {
+              var bookListHtml = '';
+              data.forEach(function(book) {
+                bookListHtml += '<li>' + book.title + ' by ' + book.author + '</li>';
+              });
+              $('#book-list').html(bookListHtml);
+            },
+            error: function(xhr, status, error) {
+              console.error(xhr.responseText);
+            }
+          });
+        });
+      });
+    </script>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+          <div class="footer-section">
+            <h4>About Us</h4>
+            <p class="context">Welcome to our Genre-based Book Recommender System, where we specialize in helping readers discover books tailored to their specific interests and preferences.</p>
+          </div>
+          <div class="footer-section">
+            <h3 class="link">Quick Links</h3>
+            <ul class="list">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="follow">Follow Us</h3>
+            <ul class="social_link">
+              <li><a href="#" target="_blank">Facebook</a></li>
+              <li><a href="#" target="_blank">Twitter</a></li>
+              <li><a href="#" target="_blank">Instagram</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="copyright">Copyright</h3>
+            <p class="cp_content">&copy; 2024 All rights for the books are reserved.</p>
+          </div>
+        </div>
+      </footer>
+      
+</html>

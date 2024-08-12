@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOK RECOMMENDER</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="https://m.media-amazon.com/images/I/615hAlMjRTL.png">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/static/service-worker.js')
+            .then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+                console.log('Service Worker registration failed:', error);
+            });
+        }
+    </script>
+    <style>
+        .alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f0f0f0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            width: 300px;
+            height: 100px;
+            display: none;
+        }
+        
+        .notification-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f0f0f0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            width: 300px;
+            height: 100px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="toggle-container">
+            <button id="toggle-login" class="active">Login</button>
+            <button id="toggle-signup">Signup</button>
+        </div>
+        <div class="form-container">
+            <form id="login-form" class="active" method="POST" action="{{ url_for('login') }}">
+                <h2>Login</h2>
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" name="login-email" required>
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="login-password" required>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+                <button type="submit">Login</button>
+            </form>
+            <form id="signup-form" method="POST" action="{{ url_for('signup') }}">
+                <h2>Signup</h2>
+                <label for="signup-name">Name</label>
+                <input type="text" id="signup-name" name="signup-name" required>
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" name="signup-email" required>
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" name="signup-password" required>
+                <label for="signup-confirm-password">Confirm Password</label>
+                <input type="password" id="signup-confirm-password" name="signup-confirm-password" required>
+                <button type="submit">Signup</button>
+            </form>
+        </div>
+        <div class="alert" id="alert">
+            <p id="alert-message"></p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
+<script>
+    let notificationBox = document.getElementById('alert');
+    let notificationMessage = document.getElementById('alert-message');
+
+    {% if notification %}
+        notificationMessage.textContent = '{{ notification }}';
+        notificationBox.style.display = 'block';
+        setTimeout(function() {
+            notificationBox.style.display = 'none';
+        }, 2000);
+    {% endif %}
+</script>
