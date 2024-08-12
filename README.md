@@ -27,7 +27,7 @@ To run and test the website on your device follow these steps :-
   # also correct the dataset destination according to your device path
 Open your web browser and navigate to http://127.0.0.1:5000 to see the web app in action!
 ### To know how to download the web app you could ping me on my gmail.
-### will find that the bottom.✌️
+### will find that at the bottom.✌️
 
 🌟 Features
 Personalized Recommendations: Get book suggestions based on your preferences.
