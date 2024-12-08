@@ -1,0 +1,13 @@
+2024-11-28 18:51:58,953 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.217.89:5000
+2024-11-28 18:51:58,954 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-28 18:51:58,957 - INFO -  * Restarting with stat
+2024-11-28 18:52:02,645 - WARNING -  * Debugger is active!
+2024-11-28 18:52:02,645 - INFO -  * Debugger PIN: 152-506-545
+2024-11-28 18:52:02,846 - INFO - Accessed the index page.
+2024-11-28 18:52:02,854 - INFO - 127.0.0.1 - - [28/Nov/2024 18:52:02] "GET / HTTP/1.1" 200 -
+2024-11-28 18:52:02,945 - INFO - 127.0.0.1 - - [28/Nov/2024 18:52:02] "GET /static/styles/index.css HTTP/1.1" 200 -
+2024-11-28 18:52:02,966 - INFO - 127.0.0.1 - - [28/Nov/2024 18:52:02] "GET /static/styles/WhatsApp%20Image%202024-11-27%20at%2014.57.11_506773ba.jpg HTTP/1.1" 200 -
+2024-11-28 18:52:02,971 - INFO - 127.0.0.1 - - [28/Nov/2024 18:52:02] "GET /static/styles/WhatsApp%20Image%202024-11-27%20at%2014.57.19_1bd4501d.jpg HTTP/1.1" 200 -
